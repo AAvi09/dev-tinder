@@ -3,6 +3,27 @@ const express = require("express");
 const app = express();
 let users = [{ id: 1, name: "Rahul", email: "rahul@example.com", age: 25 }];
 
+app.use(
+  "/router",
+  [
+    (req, res, next) => {
+      console.log("first request handled");
+      next();
+      res.send("handle 1");
+    },
+
+    (req, res, next) => {
+      console.log("2nd request handled");
+      next();
+      res.send("handle 2");
+    },
+  ],
+  (req, res) => {
+    console.log("last request handler");
+    res.send("handle 3");
+  }
+);
+
 app.get("/user/:userId/:name/:tag", (req, res) => {
   console.log(req.params);
   res.send({ firstName: "Avinash", lastName: "Sharma" });

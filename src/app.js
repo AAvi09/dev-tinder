@@ -3,7 +3,8 @@ const express = require("express");
 const app = express();
 let users = [{ id: 1, name: "Rahul", email: "rahul@example.com", age: 25 }];
 
-app.get("/user", (req, res) => {
+app.get("/user/:userId/:name/:tag", (req, res) => {
+  console.log(req.params);
   res.send({ firstName: "Avinash", lastName: "Sharma" });
 });
 

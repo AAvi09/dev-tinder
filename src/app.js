@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 let users = [{ id: 1, name: "Rahul", email: "rahul@example.com", age: 25 }];
 
-const { adminAuth } = require("./middlewares/auth");
+const { adminAuth } = require("./middlewares/auth.js");
 
 app.use("/admin", adminAuth);
 
